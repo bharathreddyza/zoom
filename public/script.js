@@ -47,6 +47,10 @@ navigator.mediaDevices
     });
   });
 
+socket.on("user-disconnected", (userId) => {
+  if (peers[userId]) peers[userId].close();
+});
+
 peer.on("open", (id) => {
   //generates unique id
   console.log(id);
